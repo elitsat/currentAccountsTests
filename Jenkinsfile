@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('install playwright') {
       steps {
-        sh '''
+        bat '''
           npm init playwright@latest
         '''
       }
@@ -15,7 +15,7 @@ pipeline {
 
     stage('test') {
       steps {
-        sh '''
+        bat '''
           npx playwright test --list
           npx playwright test
         '''
