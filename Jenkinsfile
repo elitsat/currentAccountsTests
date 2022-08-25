@@ -1,31 +1,21 @@
 pipeline {
-  agent {
-    docker {
-      image 'mcr.microsoft.com/playwright:v1.17.1'
-    }
-  }
-  stages {
-    stage('install playwright') {
-      steps {
-        bat '''
-          npm init playwright@latest
-        '''
-      }
-    }
+    agent any
 
-    stage('test') {
-      steps {
-        bat '''
-          npx playwright test --list
-          npx playwright test
-        '''
-      }
-      post {
-        success {
-          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-          sh 'rm -rf *.png'
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
         }
-      }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
-  }
 }
