@@ -1,20 +1,14 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
+        stage('Many tests') {
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.17.1'
+                }
             }
-        }
-        stage('Test') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                bat 'npx playwright test'
             }
         }
     }
