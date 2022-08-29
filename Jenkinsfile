@@ -4,8 +4,10 @@ pipeline {
       image 'mcr.microsoft.com/playwright:v1.17.1'
     }
     }
-    agent{
-    node {
+
+  stages {
+    stage('install playwright') {
+ node {
          def workspace = WORKSPACE
             // ${workspace} will now contain an absolute path to job workspace on slave
 
@@ -19,10 +21,6 @@ pipeline {
             echo "Current workspace is $WORKSPACE"
 
     }
-  }
-  stages {
-    stage('install playwright') {
-
       steps {
         sh '''
           npm init playwright@latest
