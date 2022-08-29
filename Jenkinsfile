@@ -1,5 +1,5 @@
 pipeline {
-  node {
+  node('label') {
    def workspace = WORKSPACE
       // ${workspace} will now contain an absolute path to job workspace on slave
 
@@ -11,10 +11,9 @@ pipeline {
 
       // the current Jenkins instances will support the short syntax, too:
       echo "Current workspace is $WORKSPACE"
-
-    docker {
+agent{    docker {
       image 'mcr.microsoft.com/playwright:v1.17.1'
-
+}
     }
   }
   stages {
