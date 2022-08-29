@@ -7,10 +7,10 @@
     "clean": "rimraf allure-results/ && rimraf allure-report/",
     "test": "playwright test",
     "headedTest": "playwright test --headed",
+    "installBrowsers": "npx playwright install",
     "e2e": "npx playwright test",
-    "allure-report": "npx allure generate ./allure-results && allure open",
-    "prettierCI": "npx prettier --check ./e2e-tests",
-    "prettierWrite": "npx prettier --write ./e2e-tests"
+    "prettierCI": "npx prettier --check ./tests",
+    "prettierWrite": "npx prettier --write ./tests"
   },
   "keywords": [],
   "author": "",
