@@ -1,33 +1,24 @@
 pipeline {
   agent {
     docker {
-      image 'mcr.microsoft.com/playwright:v1.17.1'
+      image 'mcr.microsoft.com/playwright:v1.17.2-focal'
+       customWorkspace 'C:/ProgramData/Jenkins/.jenkins/workspace/Current Accounts Tests'
     }
-    }
-
+  }
   stages {
     stage('install playwright') {
- node {
-         def workspace = WORKSPACE
-            // ${workspace} will now contain an absolute path to job workspace on slave
-
-            workspace = env.WORKSPACE
-            // ${workspace} will still contain an absolute path to job workspace on slave
-
-            // When using a GString at least later Jenkins versions could only handle the env.WORKSPACE variant:
-            echo "Current workspace is ${env.WORKSPACE}"
-
-            // the current Jenkins instances will support the short syntax, too:
-            echo "Current workspace is $WORKSPACE"
-
-    }
       steps {
         sh '''
-          npm init playwright@latest
+          npm i -D @playwright/test
+          npx playwright install
         '''
       }
     }
-
+    stage('help') {
+      steps {
+        sh 'npx playwright test --help'
+      }
+    }
     stage('test') {
       steps {
         sh '''
