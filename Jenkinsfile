@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+          image 'mcr.microsoft.com/playwright:v1.17.1'
+        }
+      }
+
     stages {
         stage('Build') {
             steps {
