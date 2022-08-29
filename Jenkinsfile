@@ -1,8 +1,8 @@
 pipeline {
   agent {
     docker {
-           customWorkspace 'C://ProgramData//Jenkins//.jenkins//workspace//playwright'
-
+//           customWorkspace 'C://ProgramData//Jenkins//.jenkins//workspace//playwright'
+ label 'windows'
       image 'mcr.microsoft.com/playwright:v1.17.2-focal'
     }
   }
