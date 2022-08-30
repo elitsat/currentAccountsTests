@@ -1,25 +1,25 @@
 pipeline {
-    agent {
-        docker {
-          image 'mcr.microsoft.com/playwright:v1.24.0-focal'
-        }
+  agent any
+  stages {
+    stage('Checkout Scm') {
+      steps {
+        git 'https://github.com/elitsat/currentAccountsTests.git'
       }
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
     }
+
+    stage('Batch script 0') {
+      steps {
+        bat '''dir
+npx playwright test --list'''
+      }
+    }
+
+    stage('Batch script 1') {
+      steps {
+        bat '''npm run e2e
+npm run showReport'''
+      }
+    }
+
+  }
 }
