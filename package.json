@@ -8,7 +8,7 @@
     "test": "playwright test",
     "headedTest": "playwright test --headed",
     "installBrowsers": "npx playwright install",
-    "e2e": "npx playwright test",
+    "e2e": " npx playwright test -g \"KBC - Order euro banknotes\" --project=chromium",
     "prettierCI": "npx prettier --check ./tests",
     "prettierWrite": "npx prettier --write ./tests"
   },
