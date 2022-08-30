@@ -1,14 +1,12 @@
 pipeline {
   agent {
-    docker {
-      image 'mcr.microsoft.com/playwright:v1.17.1'
-    }
+    dockerfile true
   }
   stages {
     stage('install playwright') {
       steps {
         bat '''
-          npm init playwright@latest
+          npm install
         '''
       }
     }
@@ -16,8 +14,7 @@ pipeline {
     stage('test') {
       steps {
         bat '''
-          npx playwright test --list
-          npx playwright test
+          npm run test
         '''
       }
       post {
