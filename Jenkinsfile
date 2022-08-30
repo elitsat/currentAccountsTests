@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'mcr.microsoft.com/playwright:v1.17.1'
+      label 'windows'
     }
   }
   stages {
