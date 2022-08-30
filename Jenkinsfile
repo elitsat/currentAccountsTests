@@ -10,6 +10,8 @@ pipeline {
     stage('Batch script 0') {
       steps {
         bat '''dir
+        npm init playwright@latest
+        npx playwright install
 npx playwright test --list'''
       }
     }
