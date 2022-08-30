@@ -12,7 +12,8 @@ pipeline {
         bat '''dir
         npm init playwright@latest
         npx playwright install
-npx playwright test --list'''
+npx playwright test --list
+npm install -D @playwright/test'''
       }
     }
 
