@@ -1,28 +1,32 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'mcr.microsoft.com/playwright:v1.17.1'
+    }
+  }
   stages {
-    stage('Checkout Scm') {
+    stage('install playwright') {
       steps {
-        git 'https://github.com/elitsat/currentAccountsTests.git'
+        bat '''
+          npm init playwright@latest
+        '''
       }
     }
 
-    stage('Batch script 0') {
+    stage('test') {
       steps {
-        bat '''dir
-        npm init playwright@latest
-        npx playwright install
-npx playwright test --list
-npm install -D @playwright/test'''
+        bat '''
+          npx playwright test --list
+          npx playwright test
+        '''
+      }
+      post {
+        success {
+          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
+          bat 'rm -rf *.png'
+        }
       }
     }
-
-    stage('Batch script 1') {
-      steps {
-        bat '''npm run e2e
-npm run showReport'''
-      }
-    }
-
   }
 }
+
