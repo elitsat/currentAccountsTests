@@ -51,7 +51,7 @@ test.describe('KBC - Order euro coins', () => {
 
         const locatorTotalAmount = page.locator('input[name="totalAmount"]');
         locatorTotalAmount.click();
-        await expect(locatorTotalAmount).toHaveValue("111,00");
+        await expect(locatorTotalAmount).toHaveValue("111.00");
 
         //Select branch
         const branch='9000';
