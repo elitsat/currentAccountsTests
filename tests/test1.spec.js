@@ -57,10 +57,11 @@ test.describe('Testing Forms', () => {
         await page.locator('text=Female').check();
         await page.locator('id=userNumber').fill('0885123456');
         await page.locator('id=dateOfBirthInput').fill('09/01/2000');
+        await page.locator('div.react-datepicker__day.react-datepicker__day--001.react-datepicker__day--selected[aria-label="Choose Friday, September 1st, 2000"]').click();
         await page.locator('text=Sports').check();
         //await page.locator('.subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3').fill("subject1");
         await page.locator('id=currentAddress').fill('Current addressCurrent addressCurrent address');
-        await page.locator('id=state').click();//.selectOption('Haryana');
+        //await page.locator('id=state').click();//.selectOption('Haryana');
         //await page.locator('label=Haryana').select();
 
     });
