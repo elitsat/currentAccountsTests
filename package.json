@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf allure-results/ && rimraf allure-report/",
     "test": "playwright test",
-    "headedTest": "playwright test -g \"Testing dorms\" --headed",
+    "headedTest": "npx playwright test -g \"Testing forms\" --headed",
     "installBrowsers": "npx playwright install",
     "e2e": "npx playwright test ",
     "showReport": "npx playwright show-report",
