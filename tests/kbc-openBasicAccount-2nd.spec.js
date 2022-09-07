@@ -114,7 +114,7 @@ test.describe('KBC - Open basic account for myself and someone else', () => {
         // Choose if you have Belgium national registration number
         const buttonNextNationalRegNum=page.locator('c0b-social-security button.maia-button--primary').locator('text="Next"');
         await expect(buttonNextNationalRegNum).toBeDisabled();
-        await page.locator('maia-checkbox#socialSecurityNumberInApplication').click();
+        await page.locator('maia-checkbox#socialSecurityNumberInApplication').click(); //I don't have Belgium national
         await expect(buttonNextNationalRegNum).toBeEnabled();
         buttonNextNationalRegNum.click();
 
